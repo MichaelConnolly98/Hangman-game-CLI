@@ -1,11 +1,15 @@
 from hangman_utils import select_word, build_guessed_word, game_over, draw_hanged_man, join_guessed_letters, get_player_input, max_incorrect_guesses
 
-def play_again():
+def play_again_():
     play_again = input("Play Again? (Yes or No): ").lower()
-    if play_again == 'no':
+    if play_again == 'no' or play_again == 'n':
         pass
-    else:
+    elif play_again == 'yes' or play_again == 'y':
         hangman()
+    else: 
+        print('Not valid input')
+        print('Valid inputs: Yes, yes, y, No, no, n')
+        play_again_()
 
 def hangman():
     # initial setup
@@ -14,7 +18,7 @@ def hangman():
     guessed_word = build_guessed_word(target_word, guessed_letters)
     wrong_guesses = 0
     print(r"""
-        -
+     _
     | |
     | |__      __  _   _  __      ___   _   _  __    _     __  _   _  __   
     |     \   /  \| | | \|  \   /     \| | | \|  \ /  \   /  \| | | \|  \  
@@ -77,7 +81,7 @@ def hangman():
                 ************ Your word was: {target_word} ************ 
             """)
     
-    play_again()
+    play_again_()
         
 
 if __name__ == '__main__':
